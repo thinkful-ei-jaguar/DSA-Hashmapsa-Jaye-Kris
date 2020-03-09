@@ -66,3 +66,32 @@ function anagram(array) {
 
 //anagram(array);
 
+
+function checkForPalindrome(str) {
+  const len = str.length;
+  const check = new Map();
+  
+  for(let i = 0; i < len;i++) {
+    check.has(str.charAt(i)) ? check.delete(str.charAt(i)) : check.set(str.charAt(i), null);
+  }
+  return check.size === 0 || (check.size === 1 && len % 2 === 1);
+}
+
+function deleteDuplicatesUgly() {
+  
+  const str = "Hello good sir"
+  const unique = Array.from(new Set(Array.from(str))).join('');
+  console.log(unique);
+}
+
+function delDup(str) {
+  const len = str.length;
+  const check = new Map();
+  let charMap;
+  for(let i = 0; i < len;i++) {
+    let cha = str.charAt(i);
+    charMap = Array.from(check.has(cha) ? '' : check.set(cha, null)).join();
+  }
+  return charMap.replace(/,/g, '', );
+}
+

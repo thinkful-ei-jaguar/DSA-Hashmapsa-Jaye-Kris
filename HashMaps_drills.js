@@ -42,3 +42,27 @@ const WhatDoesThisDo = function(){
 
 //WhatDoesThisDo()
 
+let array = ['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']
+
+function anagram(array) {
+  const anagramMap = new Map();
+  for(let i = 0; i < array.length; i++) {
+    const key = array[i].split('').sort().join('');
+    const anagramArray = new Set();
+    let filteredArray = [];
+    if(!anagramMap.has(key)) {
+      filteredArray = array.filter(word => word.length === key.length);
+      for(let j = 0; j < filteredArray.length; j++) {
+        const temp = filteredArray[j].split('').sort().join('');
+        if(temp === key) {
+          anagramArray.add(filteredArray[j]);
+        }
+      }
+      anagramMap.set(key, anagramArray);
+    }
+  }
+  console.log(anagramMap.entries());
+}
+
+//anagram(array);
+
